@@ -9,15 +9,12 @@ Function.prototype.curry = function (n) {
         ...args.concat(slice.apply(arguments, [0])));
     }
   } else {
-    return method.apply(method, args);
+    return method(...args);//method.apply(method, args);
   };
 };
 
 const _curriedSum = function (n) {
-  curriedN = function() {
-    let slice = Array.prototype.slice,
-      args = slice.apply(arguments, [0]);
-
+  curriedN = function(...args) {
     return args.reduce(function(memo, ele) {return memo + ele} )
   };
 
